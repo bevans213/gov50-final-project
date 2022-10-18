@@ -1,7 +1,7 @@
 ---
-title: "Gov 50 Final Project"
-author: "Your Name Here"
-description: "My final project"
+title: Gov 50 Final Project
+author: Bryn Evans
+description: I want to take data from a professional sports league or from financial markets to answer a question that I am interested in. 
 output:
   distill::distill_article:
     self_contained: false
