@@ -12,3 +12,5 @@ output:
 ## Project thoughts
 
 I am interested in exploring data related to finance or sports. 
+
+Ranking Asset Classes by Historical Returns (1985-2020): https://www.visualcapitalist.com/historical-returns-by-asset-class/
