@@ -1,7 +1,7 @@
 ---
 title: Gov 50 Final Project
 author: Bryn Evans
-description: I want to take data from a professional sports league or from financial markets to answer a question that I am interested in, or take government data on interest rates since the inception of the Federal Reserve, and compare that using linear regression to overall GDP by year for the United States, to see the relationship of interest rates with GDP. 
+description: I want to take data from a professional sports league or from financial markets to answer a question that I am interested in, or take government data on interest rates since the inception of the Federal Reserve, and compare that using linear regression to overall GDP by year for the United States, to see the relationship of interest rates with GDP. Another idea could be to compare carbon emissions from fossil fuel burning and compare that with electric vehicle product by year, to answer the questions of 1) whether electric vehicles can scale quickly enough to substitue for gasoline-burning vehicles, if that intercept point can hit goals of the US government for 0 emissions by "x" year, based on projections. 
 output:
   distill::distill_article:
     self_contained: false
