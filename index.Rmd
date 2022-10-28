@@ -27,7 +27,7 @@ I will use a regression analysis to examine the relationship of these two variab
 A negative relationship between the two variables would provide support for my hypothesis, and a positive relationship between the two variables would disprove my hypothesis.
 
 Data on Federal Funds Interest Rates by year since 1951 (the first year they were documented): https://fred.stlouisfed.org/series/INTDSRUSM193N
-Data on U.S. GDP by year since 1951: https://fred.stlouisfed.org/series/GD
+Data on U.S. GDP by year since 1951: https://fred.stlouisfed.org/series/GDP
 
 
 
