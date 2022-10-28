@@ -1,15 +1,17 @@
 
 ---
 title: Gov 50 Final Project
-author: Bryn Evan
-description: I want to take data from a professional sports league or from financial markets to answer a question that I am interested in. Another idea could be to compare carbon emissions from fossil fuel burning and compare that with electric vehicle product by year, to answer the questions of 1) whether electric vehicles can scale quickly enough to substitue for gasoline-burning vehicles, if that intercept point can hit goals of the US government for 0 emissions by "x" year, based on projections. 
+author: Bryn Evans
 
-I want to take government data on interest rates since the inception of the Federal Reserve, and compare that using linear regression to overall GDP by year for the United States, to see the relationship of interest rates with GDP.
- 
- 
 output:
   distill::distill_article:
     self_contained: false
+---
+
+description: I want to take data from a professional sports league or from financial markets to answer a question that I am interested in. Another idea could be to compare carbon emissions from fossil fuel burning and compare that with electric vehicle product by year, to answer the questions of 1) whether electric vehicles can scale quickly enough to substitue for gasoline-burning vehicles, if that intercept point can hit goals of the US government for 0 emissions by "x" year, based on projections. 
+
+I want to take government data on interest rates since the inception of the Federal Reserve, and compare that using linear regression to overall GDP by year for the United States, to see the relationship of interest rates with GDP.
+
 ---
 
 
@@ -26,3 +28,30 @@ A negative relationship between the two variables would provide support for my h
 
 Data on Federal Funds Interest Rates by year since 1951 (the first year they were documented): https://fred.stlouisfed.org/series/INTDSRUSM193N
 Data on U.S. GDP by year since 1951: https://fred.stlouisfed.org/series/GD
+
+
+
+
+
+```{r}
+library(tidyverse)
+library(dplyr)
+
+GDP <- read_csv("GDP.csv")
+Interest_Rates <- read_csv("InterestRates.csv")
+
+
+
+GDP_And_Interest_Rates <-  merge(GDP, Interest_Rates, by="DATE") 
+names(GDP_And_Interest_Rates)[3] = "Interest Rates"
+
+GDP_And_Interest_Rates
+
+regression <- lm(`Interest Rates` ~ GDP, GDP_And_Interest_Rates)
+
+regression
+```
+Coefficients:
+(Intercept)          GDP  
+  5.4782929   -0.0001768
+
