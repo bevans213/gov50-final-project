@@ -1,7 +1,12 @@
+
 ---
 title: Gov 50 Final Project
 author: Bryn Evans
-description: I want to take data from a professional sports league or from financial markets to answer a question that I am interested in. 
+description: I want to take data from a professional sports league or from financial markets to answer a question that I am interested in. Another idea could be to compare carbon emissions from fossil fuel burning and compare that with electric vehicle product by year, to answer the questions of 1) whether electric vehicles can scale quickly enough to substitue for gasoline-burning vehicles, if that intercept point can hit goals of the US government for 0 emissions by "x" year, based on projections. 
+
+I want to take government data on interest rates since the inception of the Federal Reserve, and compare that using linear regression to overall GDP by year for the United States, to see the relationship of interest rates with GDP.
+ 
+ 
 output:
   distill::distill_article:
     self_contained: false
@@ -11,4 +16,13 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related to finance or sports. 
+I am interested in exploring government data on yearly Federal Funds interest rates since the inception of the Federal Reserve, and compare that using linear regression to overall U.S. GDP by year, to see the relationship of interest rates with GDP.
+
+Research proposal: Do Federal Funds Rates set by the Federal Reserve affect the Gross Domestic Product, or economic productivity of the United States? In this study, I intend to examine the relationship with the Federal Funds Rate and US GDP. The Federal Funds Rate is an interest rate set by the Federal Reserve that determines how expensive it is for banks to lend to each other overnight. Overnight lending is typically used to satisfy capital reserves requirements for banks. The broadly accepted persperctive is that the set Federal Funds Rate affects the entire economy, because a higher rate causing lending to be more expensive, triggering a slow-down in the economy. Conversely, if the Federal Funds Rate is lower, then it is less expensive to lend, which typically stimulates growth throughout the economy. Gross Domestic Product, or GDP, is the amount of goods that are created and sold on a yearly basis within the United States. My hypothesis is the Federal Funds Rate has a negative relationship with U.S. GDP numbers, meaning that when the Federal Funds Rate is higher, the U.S. GDP will be lower. 
+
+I will use a regression analysis to examine the relationship of these two variables. The Federal Funds Rate is a number that typically ranges from 0%-5%, but can fluctuate to 20% or below 0% in extreme cases. The GDP is measured as followed: private consumption + gross private investment + government investment + government spending + (exports – imports). GDP is usually calculated by the national statistical agency of the country following the international standard. The yearly GDP number is a dollar amount. For example, the 2021 U.S. GDP for 2021 $23 trillion.
+
+A negative relationship between the two variables would provide support for my hypothesis, and a positive relationship between the two variables would disprove my hypothesis.
+
+Data on Federal Funds Interest Rates by year since 1951 (the first year they were documented): https://fred.stlouisfed.org/series/INTDSRUSM193N
+Data on U.S. GDP by year since 1951: https://fred.stlouisfed.org/series/GD
