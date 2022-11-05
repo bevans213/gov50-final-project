@@ -50,6 +50,12 @@ GDP_And_Interest_Rates
 regression <- lm(`Interest Rates` ~ GDP, GDP_And_Interest_Rates)
 
 regression
+summary(regression)
+
+regression |>
+  broom::tidy() |>
+  select(term, estimate) |>  
+  knitr::kable()
 ```
 Coefficients:
 (Intercept)          GDP  
