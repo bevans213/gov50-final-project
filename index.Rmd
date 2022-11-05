@@ -36,6 +36,7 @@ Data on U.S. GDP by year since 1951: https://fred.stlouisfed.org/series/GDP
 ```{r}
 library(tidyverse)
 library(dplyr)
+library(ggplot2)
 
 GDP <- read_csv("GDP.csv")
 Interest_Rates <- read_csv("InterestRates.csv")
@@ -56,6 +57,15 @@ regression |>
   broom::tidy() |>
   select(term, estimate) |>  
   knitr::kable()
+
+ggplot_interest_rates <- ggplot(data = GDP_And_Interest_Rates, mapping = aes(x = DATE, y = `Interest Rates`)) +
+  geom_col()
+
+ggplot_GDP <- ggplot(data = GDP_And_Interest_Rates, mapping = aes(x = DATE, y = GDP)) +
+  geom_col()
+
+ggplot_interest_rates
+ggplot_GDP
 ```
 Coefficients:
 (Intercept)          GDP  

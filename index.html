@@ -1514,7 +1514,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<p>description: I want to take data from a professional sports league or from financial markets to answer a question that I am interested in. Another idea could be to compare carbon emissions from fossil fuel burning and compare that with electric vehicle product by year, to answer the questions of 1) whether electric vehicles can scale quickly enough to substitue for gasoline-burning vehicles, if that intercept point can hit goals of the US government for 0 emissions by “x” year, based on projections.</p>
+<p>Description: I want to take data from a professional sports league or from financial markets to answer a question that I am interested in. Another idea could be to compare carbon emissions from fossil fuel burning and compare that with electric vehicle product by year, to answer the questions of 1) whether electric vehicles can scale quickly enough to substitue for gasoline-burning vehicles, if that intercept point can hit goals of the US government for 0 emissions by “x” year, based on projections.</p>
 <p>I want to take government data on interest rates since the inception of the Federal Reserve, and compare that using linear regression to overall GDP by year for the United States, to see the relationship of interest rates with GDP.</p>
 <hr />
 <h2 id="project-thoughts">Project thoughts</h2>
@@ -1839,11 +1839,56 @@ lm(formula = `Interest Rates` ~ GDP, data = GDP_And_Interest_Rates)
 Coefficients:
 (Intercept)          GDP  
   5.4782929   -0.0001768  </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>regression</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = `Interest Rates` ~ GDP, data = GDP_And_Interest_Rates)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.9286 -1.8591 -0.5238  1.2822  9.1018 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  5.478e+00  2.192e-01  24.990  &lt; 2e-16 ***
+GDP         -1.768e-04  2.298e-05  -7.695 2.33e-13 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.593 on 285 degrees of freedom
+Multiple R-squared:  0.172, Adjusted R-squared:  0.1691 
+F-statistic: 59.21 on 1 and 285 DF,  p-value: 2.326e-13</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>regression</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>broom</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>term</span>, <span class='va'>estimate</span><span class='op'>)</span> <span class='op'>|&gt;</span>  </span>
+<span>  <span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">5.4782929</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GDP</td>
+<td style="text-align: right;">-0.0001768</td>
+</tr>
+</tbody>
+</table>
 </div>
 <p>Coefficients:
 (Intercept) GDP<br />
 5.4782929 -0.0001768</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
