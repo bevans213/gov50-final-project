@@ -64,7 +64,7 @@ ggplot_interest_rates <- ggplot(data = GDP_And_Interest_Rates, mapping = aes(x =
 ggplot_GDP <- ggplot(data = GDP_And_Interest_Rates, mapping = aes(x = DATE, y = GDP)) +
   geom_col()
 
-ggplot_interest_rate
+ggplot_interest_rates
 ggplot_GDP
 ```
 Coefficients:
