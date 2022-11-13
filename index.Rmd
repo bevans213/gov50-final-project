@@ -46,7 +46,7 @@ Interest_Rates <- read_csv("InterestRates.csv")
 GDP_And_Interest_Rates <-  merge(GDP, Interest_Rates, by="DATE") 
 names(GDP_And_Interest_Rates)[3] = "Interest Rates"
 
-GDP_And_Interest_Rates
+GDP_And_Interest_Rates 
 
 regression <- lm(`Interest Rates` ~ GDP, GDP_And_Interest_Rates)
 
