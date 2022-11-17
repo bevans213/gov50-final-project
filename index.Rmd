@@ -48,6 +48,9 @@ names(GDP_And_Interest_Rates)[3] = "Interest Rates"
 
 GDP_And_Interest_Rates 
 
+
+summary(Interest_Rates)
+
 regression <- lm(`Interest Rates` ~ GDP, GDP_And_Interest_Rates)
 
 regression
@@ -70,4 +73,12 @@ ggplot_GDP
 Coefficients:
 (Intercept)          GDP  
   5.4782929   -0.0001768
+  
+  Results from one analysis: The plot of Interest Rates year over year show that interest rates peaked in the early 1980s, while also rising from the mean of 4.27% 6 times since 1951. These are most likely times of inflation, when the Federal Reserve rose interest rates to slow down growth and fight inflation.
+  
+  The plot of GDP over time shows how GDP has increased and grown in a linear fashion over time, growing from ~$2.5T in 1980 to $25T in 2022. 
+  
+  The results from my linear regression analysis indicate that there is no strong correlation between the rising or falling of interest rates and GDP growth. The correlation is -.0001, which does not show any strong correlation. This would indicate that my hypothesis that there is a correlation between interest rates and GDP is false.  
+  
+  
 

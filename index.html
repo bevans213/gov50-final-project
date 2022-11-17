@@ -1829,6 +1829,16 @@ Data on U.S. GDP by year since 1951: <a href="https://fred.stlouisfed.org/series
 286 2021-04-01 23046.934           0.25
 287 2021-07-01 23550.420           0.25</code></pre>
 <div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Interest_Rates</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>      DATE            INTDSRUSM193N   
+ Min.   :1950-01-01   Min.   : 0.250  
+ 1st Qu.:1967-11-23   1st Qu.: 2.000  
+ Median :1985-10-16   Median : 4.000  
+ Mean   :1985-10-16   Mean   : 4.278  
+ 3rd Qu.:2003-09-08   3rd Qu.: 6.000  
+ Max.   :2021-08-01   Max.   :14.000  </code></pre>
+<div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>regression</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>`Interest Rates`</span> <span class='op'>~</span> <span class='va'>GDP</span>, <span class='va'>GDP_And_Interest_Rates</span><span class='op'>)</span></span>
 <span></span>
 <span><span class='va'>regression</span></span></code></pre>
@@ -1903,7 +1913,10 @@ F-statistic: 59.21 on 1 and 285 DF,  p-value: 2.326e-13</code></pre>
 <p>Coefficients:
 (Intercept) GDP<br />
 5.4782929 -0.0001768</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Results from one analysis: The plot of Interest Rates year over year show that interest rates peaked in the early 1980s, while also rising from the mean of 4.27% 6 times since 1951. These are most likely times of inflation, when the Federal Reserve rose interest rates to slow down growth and fight inflation.</p>
+<p>The plot of GDP over time shows how GDP has increased and grown in a linear fashion over time, growing from ~$2.5T in 1980 to $25T in 2022.</p>
+<p>The results from my linear regression analysis indicate that there is no strong correlation between the rising or falling of interest rates and GDP growth. The correlation is -.0001, which does not show any strong correlation. This would indicate that my hypothesis that there is a correlation between interest rates and GDP is false.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
