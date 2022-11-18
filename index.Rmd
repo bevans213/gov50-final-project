@@ -19,14 +19,14 @@ I want to take government data on interest rates since the inception of the Fede
 
 I am interested in exploring government data on yearly Federal Funds interest rates since the inception of the Federal Reserve, and compare that using linear regression to overall U.S. GDP by year, to see the relationship of interest rates with GDP.
 
-Research proposal: Do Federal Funds Rates set by the Federal Reserve affect the Gross Domestic Product, or economic productivity of the United States? In this study, I intend to examine the relationship with the Federal Funds Rate and US GDP. The Federal Funds Rate is an interest rate set by the Federal Reserve that determines how expensive it is for banks to lend to each other overnight. Overnight lending is typically used to satisfy capital reserves requirements for banks. The broadly accepted persperctive is that the set Federal Funds Rate affects the entire economy, because a higher rate causing lending to be more expensive, triggering a slow-down in the economy. Conversely, if the Federal Funds Rate is lower, then it is less expensive to lend, which typically stimulates growth throughout the economy. Gross Domestic Product, or GDP, is the amount of goods that are created and sold on a yearly basis within the United States. My hypothesis is the Federal Funds Rate has a negative relationship with U.S. GDP numbers, meaning that when the Federal Funds Rate is higher, the U.S. GDP will be lower. 
+Research proposal: Do Federal Funds Rates set by the Federal Reserve affect the Gross Domestic Product, or economic productivity of the United States? In this study, I intend to examine the relationship with the Federal Funds Rate and US GDP. The Federal Funds Rate is an interest rate set by the Federal Reserve that determines how expensive it is for banks to lend to each other overnight. Overnight lending is typically used to satisfy capital reserves requirements for banks. The broadly accepted perspective is that the set Federal Funds Rate affects the entire economy, because a higher rate causes lending to be more expensive, triggering a slow-down in the economy. Conversely, if the Federal Funds Rate is lower, then it is less expensive to lend, which typically stimulates growth throughout the economy. Gross Domestic Product, or GDP, is the amount of goods that are created and sold on a yearly basis within the United States. My hypothesis is the Federal Funds Rate has a negative relationship with U.S. GDP numbers, meaning that when the Federal Funds Rate is higher, the U.S. GDP will be lower. 
 
-I will use a regression analysis to examine the relationship of these two variables. The Federal Funds Rate is a number that typically ranges from 0%-5%, but can fluctuate to 20% or below 0% in extreme cases. The GDP is measured as followed: private consumption + gross private investment + government investment + government spending + (exports – imports). GDP is usually calculated by the national statistical agency of the country following the international standard. The yearly GDP number is a dollar amount. For example, the 2021 U.S. GDP for 2021 $23 trillion.
+I will use a regression analysis to examine the relationship of these two variables. The Federal Funds Rate is a number that typically ranges from 0%-5%, but can fluctuate to 20% or below 0% in extreme cases. The GDP is measured as followed: private consumption + gross private investment + government investment + government spending + (exports – imports). GDP is usually calculated by the national statistical agency of the country following the international standard. The yearly GDP number is a dollar amount. For example, the 2021 U.S. GDP for 2021 was $23 trillion.
 
 A negative relationship between the two variables would provide support for my hypothesis, and a positive relationship between the two variables would disprove my hypothesis.
 
-Data on Federal Funds Interest Rates by year since 1951 (the first year they were documented): https://fred.stlouisfed.org/series/INTDSRUSM193N
-Data on U.S. GDP by year since 1951: https://fred.stlouisfed.org/series/GDP
+Data on Federal Funds Interest Rates by year since 1954 (the first year they were documented): https://fred.stlouisfed.org/series/FEDFUNDS
+Data on U.S. GDP by year since 1947 (the first year they were documented): https://fred.stlouisfed.org/series/GDP
 
 
 
@@ -38,46 +38,49 @@ library(dplyr)
 library(ggplot2)
 
 GDP <- read_csv("GDP.csv")
-Interest_Rates <- read_csv("InterestRates.csv")
+FedFundsRate <- read_csv("FedFundsRate.csv")
+
+GDP_And_Fed_Funds_Rates <-  merge(GDP, FedFundsRate, by="DATE") 
+names(GDP_And_Fed_Funds_Rates)[3] = "Fed Funds Rate"
+
+regression <- lm(`Fed Funds Rate` ~ GDP, GDP_And_Fed_Funds_Rates)
+
+ggplot_fed_funds_rates <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x = DATE, y = `Fed Funds Rate`)) +
+  geom_col()
+
+ggplot_GDP <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x = DATE, y = GDP)) +
+  geom_col()
+
+ggplot_regression <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x =`Fed Funds Rate`, y =GDP)) +
+  geom_point() +
+  geom_smooth(method = "lm")
 
 
-
-GDP_And_Interest_Rates <-  merge(GDP, Interest_Rates, by="DATE") 
-names(GDP_And_Interest_Rates)[3] = "Interest Rates"
-
-GDP_And_Interest_Rates 
-
-
-summary(Interest_Rates)
-
-regression <- lm(`Interest Rates` ~ GDP, GDP_And_Interest_Rates)
-
-regression
-summary(regression)
+ggplot_fed_funds_rates
+ggplot_GDP
+ggplot_regression
 
 regression |>
   broom::tidy() |>
   select(term, estimate) |>  
   knitr::kable()
-
-ggplot_interest_rates <- ggplot(data = GDP_And_Interest_Rates, mapping = aes(x = DATE, y = `Interest Rates`)) +
-  geom_col()
-
-ggplot_GDP <- ggplot(data = GDP_And_Interest_Rates, mapping = aes(x = DATE, y = GDP)) +
-  geom_col()
-
-ggplot_interest_rates
-ggplot_GDP
 ```
-Coefficients:
-(Intercept)          GDP  
-  5.4782929   -0.0001768
-  
+
   Results from one analysis: The plot of Interest Rates year over year show that interest rates peaked in the early 1980s, while also rising from the mean of 4.27% 6 times since 1951. These are most likely times of inflation, when the Federal Reserve rose interest rates to slow down growth and fight inflation.
   
   The plot of GDP over time shows how GDP has increased and grown in a linear fashion over time, growing from ~$2.5T in 1980 to $25T in 2022. 
   
-  The results from my linear regression analysis indicate that there is no strong correlation between the rising or falling of interest rates and GDP growth. The correlation is -.0001, which does not show any strong correlation. This would indicate that my hypothesis that there is a correlation between interest rates and GDP is false.  
+  The results from my linear regression analysis indicate that there is no strong correlation between the rising or falling of interest rates and GDP growth. The correlation is -.0002, which does show a correlation. This would indicate that my hypothesis that there is a correlation between interest rates and GDP is true.  
   
+  Final Report:
   
+Introduction: My research question asked if there was a causal relationship between U.S. federal funds rate, which determines the price of overnight lending by banks to other banks, and the overall U.S. gross domestic product, or GDP. This question is interesting because the federal funds rate is typically understood to affect interest rates at large throughout the U.S. economy. So, if the Federal Reserve, which sets the federal funds rate, decides a higher interest rate, this is typically believed to slow economic growth, and borrowing becomes more expensive and companies do not want to take on as much debt, which can help facilitate growth. Based on this, my hypothesis was that there was a negative relationship between the federal funds rate and overall U.S. GDP year-over-year, starting when the the data was first collected in 1951 to present day in 2022. This means that if interest rates when up, meaning that borrowing went down, GDP would go down.  
+
+Data: This was a cross-sectional study. My data source was the Federal Reserve Economic Data, or the FRED. The two data sets that I merged were datasets on the effective federal funds rate starting in 1954, which outputted one rate per year, and the U.S. gross domestic product (GDP) starting in 1947, which outputted one number a year, with a trillion dollar amount of the goods and services produced that year in the United States. Since the federal funds rates data was first tracked in 1954, that is where my analysis starts.  
+
+The independent variable in this study is the federal funds rate, and the dependent variable is GDP by year, because I am hypothesizing that the federal funds rate has a direct affect on GDP. 
+
+Results: I have produced 3 plots. The first shows the relationship between GDP over time, the second shows the relationship between federal funds rates over time, and the third shows the linear regression relationship between GDP and federal funds rates. The main coefficient of interest was the coefficient between the federal funds rate and GDP, which came out to -.0002. This coefficient shows a modest negative relationship between federal funds rates and GDP. 
+
+Summary: My results did support my hypothesis that there is a negative relationship between federal funds rates and GDP, however, it was not a particularly strong relationship. A limitation of my analysis was that data has only been tracked for 68 years, which may not be enough time to show a causal relationship. Some threats to inference or confounding variables could be other macroeconomic factors in the environment that had effects on GDP, such as geopolitical events, trade wars, shortages/ surpluses of certain goods, boom/ bust economic cycles. My analysis could be improved by gathering other data like the above that could have a confounding effect, and test that data for a null hypothesis to ensure that it did not have a confounding effect.
 
