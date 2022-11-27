@@ -66,6 +66,7 @@ ggplot_regression <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x =`Fe
   geom_point() +
   geom_smooth(method = "lm")
 
+
 ggplot_fed_funds_rates
 ggplot_GDP
 ggplot_GDP_growth_rate
