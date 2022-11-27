@@ -85,7 +85,7 @@ modelsummary(regression,
   
   The plot of GDP over time shows how GDP has increased and grown in a linear fashion over time, growing from ~$2.5T in 1980 to $25T in 2022. 
 
-Additionally, I calculated the growth rate change of GDP year over year, and visualized it in a graph. The average growth rate for the U.S. economy, quarter to quarter, from 1954 to 2020, has been 3.14%. This is in line with economists estimates. This graph also shows the extreme decrease and following spike in the GDP during the COVID-19 pandemic, with the GDP going from $21.54T in January 2020, to 19.64T dollars in April 2020, to 21.3T dollars in July 2020. 
+Additionally, I calculated the growth rate change of GDP year over year, and visualized it in a graph. The average growth rate for the U.S. economy, quarter to quarter, from 1954 to 2020, has been 3.14%. This is in line with economists estimates. This graph also shows the extreme decrease and following spike in the GDP during the COVID-19 pandemic, with the GDP going from $21.54T in January 2020, to 19.64T dollars in April 2020, to 21.3T dollars in July 2020.
 
 ## Final Report:
   
@@ -93,7 +93,7 @@ Additionally, I calculated the growth rate change of GDP year over year, and vis
 
 **Data:** This was a cross-sectional study. My data source was the Federal Reserve Economic Data, or the FRED. The two data sets that I merged were datasets on the effective federal funds rate starting in 1954, which outputted one rate per year, and the U.S. gross domestic product (GDP) starting in 1947, which outputted one number a year, with a trillion dollar amount of the goods and services produced that year in the United States. Since the federal funds rates data was first tracked in 1954, that is where my analysis starts.
 
-I initially calculated the reationship between GDP and federal funds rate without any lag in the years. However, economists estimate that there is usually a 12 month lag in the economy, meaning that any change in interest rates by the Federal Reserve will take 12 months to affect GDP. Because of this, I created a Date_lag variable that lagged the years by 1-2 years to take this into account.
+I initially calculated the relationship between GDP and federal funds rate without any lag in the years. However, economists estimate that there is usually a 12 month lag in the economy, meaning that any change in interest rates by the Federal Reserve will take 12 months to affect GDP. Because of this, I created a Date_lag variable that lagged the years by 1-2 years to take this into account.
 
 The independent variable in this study is the federal funds rate, and the dependent variable is GDP by year, because I am hypothesizing that the federal funds rate has a direct effect on GDP. 
 
