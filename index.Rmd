@@ -80,7 +80,7 @@ ggplot_GDP
 ```
   
   
-  This plot of GDP over time shows how GDP has increased and grown in a linear fashion over time, growing from ~$2.5T in 1980 to $25T in 2022. This is the dependent variable in my study. 
+  This plot of GDP over time shows how GDP has increased and grown in a linear fashion over time, growing from ~$2.5T in 1980 to ~$25T in 2022. This is the dependent variable in my study. 
   
   
 ```{r}
