@@ -112,7 +112,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["FedFundsRate.csv","GDP.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-1-1.png","index_files/figure-html5/unnamed-chunk-1-2.png","index_files/figure-html5/unnamed-chunk-1-3.png","index_files/figure-html5/unnamed-chunk-1-4.png","index_files/header-attrs-2.16/header-attrs.js","index_files/header-attrs-2.17/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/kePrint-0.0.1/kePrint.js","index_files/lightable-0.0.1/lightable.css","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","InterestRates.csv"]}
+  {"type":"character","attributes":{},"value":["FedFundsRate.csv","GDP.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-1-1.png","index_files/figure-html5/unnamed-chunk-1-2.png","index_files/figure-html5/unnamed-chunk-1-3.png","index_files/figure-html5/unnamed-chunk-1-4.png","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/header-attrs-2.16/header-attrs.js","index_files/header-attrs-2.17/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/kePrint-0.0.1/kePrint.js","index_files/lightable-0.0.1/lightable.css","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","InterestRates.csv"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1552,7 +1552,8 @@ Data on U.S. GDP by year since 1947 (the first year they were documented): <a hr
 <span></span>
 <span><span class='va'>ggplot_GDP</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>GDP_And_Fed_Funds_Rates</span>, mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Date_lag</span>, y <span class='op'>=</span> <span class='va'>GDP</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>" Date (Lagged by 1-2 years)"</span><span class='op'>)</span></span>
+<span>   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>" Date (Lagged by 1-2 years)"</span>, </span>
+<span>        y <span class='op'>=</span> <span class='st'>"GDP ($ Billions)"</span><span class='op'>)</span></span>
 <span></span>
 <span><span class='va'>ggplot_GDP_growth_rate</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>GDP_And_Fed_Funds_Rates</span>, mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Date_lag</span>, y <span class='op'>=</span> <span class='va'>GDP_change_percent</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
@@ -1560,24 +1561,42 @@ Data on U.S. GDP by year since 1947 (the first year they were documented): <a hr
 <span></span>
 <span><span class='va'>ggplot_regression</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>GDP_And_Fed_Funds_Rates</span>, mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span><span class='va'>`Fed Funds Rate`</span>, y <span class='op'>=</span> <span class='va'>GDP</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span><span class='op'>)</span></span>
-<span></span>
-<span></span>
-<span><span class='va'>ggplot_fed_funds_rates</span></span></code></pre>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span><span class='op'>)</span></span></code></pre>
 </div>
-<img src="index_files/figure-html5/unnamed-chunk-1-1.png" width="624" />
+</div>
+<h2 id="results-from-one-analysis">Results From One Analysis:</h2>
+<div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ggplot_GDP</span></span></code></pre>
 </div>
-<img src="index_files/figure-html5/unnamed-chunk-1-2.png" width="624" />
+<p><img src="index_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
+</div>
+<p>This plot of GDP over time shows how GDP has increased and grown in a linear fashion over time, growing from ~$2.5T in 1980 to $25T in 2022. This is the dependent variable in my study.</p>
+<div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ggplot_GDP_growth_rate</span></span></code></pre>
 </div>
-<img src="index_files/figure-html5/unnamed-chunk-1-3.png" width="624" />
+<p><img src="index_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
+</div>
+<p>Additionally, I calculated the growth rate change of GDP year over year, and visualized it in a graph. The average growth rate for the U.S. economy, quarter to quarter, from 1954 to 2020, has been 3.14%. This is in line with economists estimates. This graph also shows the extreme decrease and following spike in the GDP during the COVID-19 pandemic, with the GDP going from $21.54T in January 2020, to 19.64T dollars in April 2020, to 21.3T dollars in July 2020.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ggplot_fed_funds_rates</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<p>Lastly, I plotted interest rates year over year. This analysis showed that interest rates peaked in the early 1980s, while also rising from the mean of 4.27% 6 times since 1951. These were most likely times of inflation, when the Federal Reserve rose interest rates to slow down growth and fight inflation.</p>
+<h2 id="final-report">Final Report:</h2>
+<p><strong>Introduction:</strong> My research question asked if there was a causal relationship between the U.S. federal funds rate, which determines the price of overnight lending by banks to other banks, and the overall U.S. gross domestic product, or GDP. This question is interesting because the federal funds rate is typically understood to affect interest rates at large throughout the U.S. economy. So, if the Federal Reserve, which sets the federal funds rate, decides a higher interest rate, this is typically believed to slow economic growth, and borrowing becomes more expensive and companies do not want to take on as much debt, which can help facilitate growth. Based on this, my hypothesis was that there was a negative relationship between the federal funds rate and overall U.S. GDP year-over-year, starting when the the data was first collected in 1954 to present day in 2022. This means that if interest rates went up, meaning that borrowing went down, GDP would go down.</p>
+<p><strong>Data:</strong> This was a cross-sectional study. My data source was the Federal Reserve Economic Data, or the FRED. The two data sets that I merged were datasets on the effective federal funds rate starting in 1954, which outputted one rate per year, and the U.S. gross domestic product (GDP) starting in 1947, which outputted one number a year, with a trillion dollar amount of the goods and services produced that year in the United States. Since the federal funds rates data was first tracked in 1954, that is where my analysis starts.</p>
+<p>I initially calculated the relationship between GDP and federal funds rate without any lag in the years. However, economists estimate that there is usually a 12 month lag in the economy, meaning that any change in interest rates by the Federal Reserve will take 12 months to affect GDP. Because of this, I created a Date_lag variable that lagged the years by 1-2 years to take this into account.</p>
+<p>The independent variable in this study is the federal funds rate, and the dependent variable is GDP by year, because I am hypothesizing that the federal funds rate has a direct effect on GDP.</p>
+<p><strong>Results:</strong></p>
+<div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ggplot_regression</span></span></code></pre>
 </div>
-<img src="index_files/figure-html5/unnamed-chunk-1-4.png" width="624" />
+<img src="index_files/figure-html5/unnamed-chunk-5-1.png" width="624" />
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/modelsummary.html'>modelsummary</a></span><span class='op'>(</span><span class='va'>regression</span>,</span>
 <span>             estimate <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"{estimate}{stars}"</span><span class='op'>)</span>,</span>
@@ -1666,20 +1685,11 @@ R2 Adj.
 </tbody>
 </table>
 </div>
-<h2 id="results-from-one-analysis">Results From One Analysis:</h2>
-<p>I have produced 4 plots. The first shows the relationship between federal funds rates over time, the second shows the effective GDP over time (lagged for 1-2 years for accuracy), the third shows the growth rate of the GDP over time with lag accounted for, and the fourth shows the linear regression relationship between GDP and federal funds rates</p>
-<p>The plot of Interest Rates year over year show that interest rates peaked in the early 1980s, while also rising from the mean of 4.27% 6 times since 1951. These are most likely times of inflation, when the Federal Reserve rose interest rates to slow down growth and fight inflation.</p>
-<p>The plot of GDP over time shows how GDP has increased and grown in a linear fashion over time, growing from ~$2.5T in 1980 to $25T in 2022.</p>
-<p>Additionally, I calculated the growth rate change of GDP year over year, and visualized it in a graph. The average growth rate for the U.S. economy, quarter to quarter, from 1954 to 2020, has been 3.14%. This is in line with economists estimates. This graph also shows the extreme decrease and following spike in the GDP during the COVID-19 pandemic, with the GDP going from $21.54T in January 2020, to 19.64T dollars in April 2020, to 21.3T dollars in July 2020.</p>
-<h2 id="final-report">Final Report:</h2>
-<p><strong>Introduction:</strong> My research question asked if there was a causal relationship between the U.S. federal funds rate, which determines the price of overnight lending by banks to other banks, and the overall U.S. gross domestic product, or GDP. This question is interesting because the federal funds rate is typically understood to affect interest rates at large throughout the U.S. economy. So, if the Federal Reserve, which sets the federal funds rate, decides a higher interest rate, this is typically believed to slow economic growth, and borrowing becomes more expensive and companies do not want to take on as much debt, which can help facilitate growth. Based on this, my hypothesis was that there was a negative relationship between the federal funds rate and overall U.S. GDP year-over-year, starting when the the data was first collected in 1954 to present day in 2022. This means that if interest rates went up, meaning that borrowing went down, GDP would go down.</p>
-<p><strong>Data:</strong> This was a cross-sectional study. My data source was the Federal Reserve Economic Data, or the FRED. The two data sets that I merged were datasets on the effective federal funds rate starting in 1954, which outputted one rate per year, and the U.S. gross domestic product (GDP) starting in 1947, which outputted one number a year, with a trillion dollar amount of the goods and services produced that year in the United States. Since the federal funds rates data was first tracked in 1954, that is where my analysis starts.</p>
-<p>I initially calculated the relationship between GDP and federal funds rate without any lag in the years. However, economists estimate that there is usually a 12 month lag in the economy, meaning that any change in interest rates by the Federal Reserve will take 12 months to affect GDP. Because of this, I created a Date_lag variable that lagged the years by 1-2 years to take this into account.</p>
-<p>The independent variable in this study is the federal funds rate, and the dependent variable is GDP by year, because I am hypothesizing that the federal funds rate has a direct effect on GDP.</p>
-<p><strong>Results:</strong> In my regression analysis, the main coefficient of interest was the coefficient between the federal funds rate and GDP, which came out to -356 when accounting for lag, meaning that when interest rates increase by a full point, GDP decreases by $356B. This coefficient shows a strong negative relationship between the federal funds rates and GDP.</p>
+<p>This linear regression regression analysis shows a causal relationship between GDP and federal funds rates.</p>
+<p>In my regression analysis, the main coefficient of interest was the coefficient between the federal funds rate and GDP, which came out to -356 when accounting for lag, meaning that when interest rates increase by a full point, GDP decreases by $356B. This coefficient shows a strong negative relationship between the federal funds rates and GDP, and is statistically significant.</p>
 <p>I also ran the regression with the date in mind. The date coefficient was .88 (with lag accounted for), meaning every time date increased by 1, GDP increased by $880M. This is in line with estimates, as GDP has steadily rose throughout time.</p>
-<p><strong>Summary:</strong> My results did support my hypothesis that there is a strong negative relationship between federal funds rates and GDP. A limitation of my analysis was that data has only been tracked for 68 years, which may not be enough time to show a causal relationship. Some threats to inference or confounding variables could be other macroeconomic factors in the environment that had effects on GDP, such as geopolitical events, trade wars, shortages/ surpluses of certain goods, or boom/ bust economic cycles. My analysis could be improved by gathering other data like the above that could have a confounding effect, and test that data for a null hypothesis to ensure that it did not have a confounding effect.</p>
-<p>The takeaway from this research project is that the Federal Reserve must be very careful, thoughtful, and sparing in their decision to change interest rates, as this has a profound effect on the U.S. and global economy. An increase in the interest rates that is not needed can adversely affect billions of lives around the world, which is why those at the Federal Reserve must be very calculated and responsbile in their actions.</p>
+<p><strong>Summary:</strong> My results did support my hypothesis that there is a strong negative causal relationship between federal funds rates and GDP. A limitation of my analysis was that data has only been tracked for 68 years, which may not be enough time to show a causal relationship. Some threats to inference or confounding variables could be other macroeconomic factors in the environment that had effects on GDP, such as geopolitical events, trade wars, shortages/ surpluses of certain goods, or boom/ bust economic cycles. My analysis could be improved by gathering other data like the above that could have a confounding effect, and test that data for a null hypothesis to ensure that it did not have a confounding effect.</p>
+<p>The takeaway from this research project is that the Federal Reserve must be very careful, thoughtful, and sparing in their decision to change interest rates, as this has a profound effect on the U.S. and global economy. An increase in the interest rates that is not needed can adversely affect billions of lives around the world, which is why those at the Federal Reserve must be very calculated and responsible in their actions.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

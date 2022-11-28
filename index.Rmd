@@ -56,7 +56,8 @@ ggplot_fed_funds_rates <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x
 
 ggplot_GDP <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x = Date_lag, y = GDP)) +
   geom_col() +
-   labs(x = " Date (Lagged by 1-2 years)")
+   labs(x = " Date (Lagged by 1-2 years)", 
+        y = "GDP ($ Billions)")
 
 ggplot_GDP_growth_rate <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x = Date_lag, y = GDP_change_percent)) +
   geom_col() +
@@ -67,25 +68,30 @@ ggplot_regression <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x =`Fe
   geom_smooth(method = "lm")
 
 
-ggplot_fed_funds_rates
-ggplot_GDP
-ggplot_GDP_growth_rate
-ggplot_regression
-
-modelsummary(regression,
-             estimate = c("{estimate}{stars}"),
-             gof_omit = c("IC|Lik.|RMSE"))
 ```
 
 ## Results From One Analysis: 
+
+```{r}
+ggplot_GDP
+```
   
-  I have produced 4 plots. The first shows the relationship between federal funds rates over time, the second shows the effective GDP over time (lagged for 1-2 years for accuracy), the third shows the growth rate of the GDP over time with lag accounted for, and the fourth shows the linear regression relationship between GDP and federal funds rates
   
-  The plot of Interest Rates year over year show that interest rates peaked in the early 1980s, while also rising from the mean of 4.27% 6 times since 1951. These are most likely times of inflation, when the Federal Reserve rose interest rates to slow down growth and fight inflation.
+  This plot of GDP over time shows how GDP has increased and grown in a linear fashion over time, growing from ~$2.5T in 1980 to $25T in 2022. This is the dependent variable in my study. 
   
-  The plot of GDP over time shows how GDP has increased and grown in a linear fashion over time, growing from ~$2.5T in 1980 to $25T in 2022. 
+  
+```{r}
+ggplot_GDP_growth_rate
+```
 
 Additionally, I calculated the growth rate change of GDP year over year, and visualized it in a graph. The average growth rate for the U.S. economy, quarter to quarter, from 1954 to 2020, has been 3.14%. This is in line with economists estimates. This graph also shows the extreme decrease and following spike in the GDP during the COVID-19 pandemic, with the GDP going from $21.54T in January 2020, to 19.64T dollars in April 2020, to 21.3T dollars in July 2020.
+
+
+```{r}
+ggplot_fed_funds_rates
+```
+
+  Lastly, I plotted  interest rates year over year. This analysis showed that interest rates peaked in the early 1980s, while also rising from the mean of 4.27% 6 times since 1951. These were most likely times of inflation, when the Federal Reserve rose interest rates to slow down growth and fight inflation.
 
 ## Final Report:
   
@@ -97,11 +103,25 @@ I initially calculated the relationship between GDP and federal funds rate witho
 
 The independent variable in this study is the federal funds rate, and the dependent variable is GDP by year, because I am hypothesizing that the federal funds rate has a direct effect on GDP. 
 
-**Results:** In my regression analysis, the main coefficient of interest was the coefficient between the federal funds rate and GDP, which came out to -356 when accounting for lag, meaning that when interest rates increase by a full point, GDP decreases by $356B. This coefficient shows a strong negative relationship between the federal funds rates and GDP.
+**Results:** 
+
+```{r}
+
+ggplot_regression
+
+modelsummary(regression,
+             estimate = c("{estimate}{stars}"),
+             gof_omit = c("IC|Lik.|RMSE"))
+```
+
+This linear regression regression analysis shows a causal relationship between GDP and federal funds rates.
+
+In my regression analysis, the main coefficient of interest was the coefficient between the federal funds rate and GDP, which came out to -356 when accounting for lag, meaning that when interest rates increase by a full point, GDP decreases by $356B. This coefficient shows a strong negative relationship between the federal funds rates and GDP, and is statistically significant. 
   
 I also ran the regression with the date in mind. The date coefficient was .88 (with lag accounted for), meaning every time date increased by 1, GDP increased by $880M. This is in line with estimates, as GDP has steadily rose throughout time. 
 
-**Summary:** My results did support my hypothesis that there is a strong negative relationship between federal funds rates and GDP. A limitation of my analysis was that data has only been tracked for 68 years, which may not be enough time to show a causal relationship. Some threats to inference or confounding variables could be other macroeconomic factors in the environment that had effects on GDP, such as geopolitical events, trade wars, shortages/ surpluses of certain goods, or boom/ bust economic cycles. My analysis could be improved by gathering other data like the above that could have a confounding effect, and test that data for a null hypothesis to ensure that it did not have a confounding effect.
 
-The takeaway from this research project is that the Federal Reserve must be very careful, thoughtful, and sparing in their decision to change interest rates, as this has a profound effect on the U.S. and global economy. An increase in the interest rates that is not needed can adversely affect billions of lives around the world, which is why those at the Federal Reserve must be very calculated and responsbile in their actions.
+**Summary:** My results did support my hypothesis that there is a strong negative causal relationship between federal funds rates and GDP. A limitation of my analysis was that data has only been tracked for 68 years, which may not be enough time to show a causal relationship. Some threats to inference or confounding variables could be other macroeconomic factors in the environment that had effects on GDP, such as geopolitical events, trade wars, shortages/ surpluses of certain goods, or boom/ bust economic cycles. My analysis could be improved by gathering other data like the above that could have a confounding effect, and test that data for a null hypothesis to ensure that it did not have a confounding effect.
+
+The takeaway from this research project is that the Federal Reserve must be very careful, thoughtful, and sparing in their decision to change interest rates, as this has a profound effect on the U.S. and global economy. An increase in the interest rates that is not needed can adversely affect billions of lives around the world, which is why those at the Federal Reserve must be very calculated and responsible in their actions.
 
