@@ -52,7 +52,8 @@ GDP_And_Fed_Funds_Rates <- GDP_And_Fed_Funds_Rates |>
 regression <- lm(GDP ~ `Fed Funds Rate` + Date_lag, GDP_And_Fed_Funds_Rates)
 
 ggplot_fed_funds_rates <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x = Date, y = `Fed Funds Rate`)) +
-  geom_col() 
+  geom_col() +
+  labs(y = "Fed Funds Rate (%)")
 
 ggplot_GDP <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x = Date_lag, y = GDP)) +
   geom_col() +
@@ -65,7 +66,9 @@ ggplot_GDP_growth_rate <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x
 
 ggplot_regression <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x =`Fed Funds Rate`, y = GDP)) +
   geom_point() +
-  geom_smooth(method = "lm")
+  geom_smooth(method = "lm") +
+  labs(x = "Fed Funds Rate (%)",
+       y = "GDP ($ Billions)")
 
 
 ```
