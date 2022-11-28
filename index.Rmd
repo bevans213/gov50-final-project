@@ -45,26 +45,26 @@ names(GDP_And_Fed_Funds_Rates)[1] = "Date"
 
 GDP_And_Fed_Funds_Rates <- GDP_And_Fed_Funds_Rates |>
   arrange(Date) |> # first sort by Date
-  mutate(GDP_change_percent = ((GDP - lag(GDP)) / GDP) * 100, # Difference in GDP between Dates
+  mutate(GDP_change_percent = ((GDP - lag(GDP)) / GDP) * 100, 
          Rate_percent = (GDP_change_percent /lag(GDP) * 100),
-         Date_lag =  lag(Date, 10))# growth rate in percent
+         Rate_lag = lag(`Fed Funds Rate`, 5))
 
-regression <- lm(GDP ~ `Fed Funds Rate` + Date_lag, GDP_And_Fed_Funds_Rates)
+regression <- lm(GDP ~ `Fed Funds Rate` + Rate_lag + Date, GDP_And_Fed_Funds_Rates)
 
 ggplot_fed_funds_rates <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x = Date, y = `Fed Funds Rate`)) +
   geom_col() +
   labs(y = "Fed Funds Rate (%)")
 
-ggplot_GDP <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x = Date_lag, y = GDP)) +
+ggplot_GDP <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x = Date, y = GDP)) +
   geom_col() +
    labs(x = " Date (Lagged by 1-2 years)", 
         y = "GDP ($ Billions)")
 
-ggplot_GDP_growth_rate <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x = Date_lag, y = GDP_change_percent)) +
+ggplot_GDP_growth_rate <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x = Date, y = GDP_change_percent)) +
   geom_col() +
   labs(x = " Date (Lagged by 1-2 years)", y = "GDP Change (%)")
 
-ggplot_regression <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x =`Fed Funds Rate`, y = GDP)) +
+ggplot_regression <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x = Rate_lag, y = GDP)) +
   geom_point() +
   geom_smooth(method = "lm") +
   labs(x = "Fed Funds Rate (%)",
@@ -102,7 +102,7 @@ ggplot_fed_funds_rates
 
 **Data:** This was a cross-sectional study. My data source was the Federal Reserve Economic Data, or the FRED. The two data sets that I merged were datasets on the effective federal funds rate starting in 1954, which outputted one rate per year, and the U.S. gross domestic product (GDP) starting in 1947, which outputted one number a year, with a trillion dollar amount of the goods and services produced that year in the United States. Since the federal funds rates data was first tracked in 1954, that is where my analysis starts.
 
-I initially calculated the relationship between GDP and federal funds rate without any lag in the years. However, economists estimate that there is usually a 12 month lag in the economy, meaning that any change in interest rates by the Federal Reserve will take 12 months to affect GDP. Because of this, I created a Date_lag variable that lagged the years by 1-2 years to take this into account.
+I initially calculated the relationship between GDP and federal funds rate without any lag in the years. However, economists estimate that there is usually a 12 month lag in the economy, meaning that any change in interest rates by the Federal Reserve will take 12 months to affect GDP. Because of this, I created a Rate_lag variable that lagged the federal funds rates behind GDP by 1-2 years to take this into account.
 
 The independent variable in this study is the federal funds rate, and the dependent variable is GDP by year, because I am hypothesizing that the federal funds rate has a direct effect on GDP. 
 
@@ -117,14 +117,14 @@ modelsummary(regression,
              gof_omit = c("IC|Lik.|RMSE"))
 ```
 
-This linear regression regression analysis shows a causal relationship between GDP and federal funds rates.
+This linear regression regression analysis shows a strong negative correlation between GDP and federal funds rates.
 
-In my regression analysis, the main coefficient of interest was the coefficient between the federal funds rate and GDP, which came out to -356 when accounting for lag, meaning that when interest rates increase by a full point, GDP decreases by $356B. This coefficient shows a strong negative relationship between the federal funds rates and GDP, and is statistically significant. 
+In my regression analysis, the main coefficient of interest was the coefficient between the federal funds rate and GDP, which came out to -274 when accounting for lag, meaning that when interest rates increase by a full point, GDP decreases by $274B. This coefficient shows a strong negative relationship between the federal funds rates and GDP, and is statistically significant. 
   
-I also ran the regression with the date in mind. The date coefficient was .88 (with lag accounted for), meaning every time date increased by 1, GDP increased by $880M. This is in line with estimates, as GDP has steadily rose throughout time. 
+I also ran the regression with the date in mind. The date coefficient was .86, meaning every time date increased by 1, GDP increased by $860M. This is in line with estimates, as GDP has steadily rose throughout time. 
 
 
-**Summary:** My results did support my hypothesis that there is a strong negative causal relationship between federal funds rates and GDP. A limitation of my analysis was that data has only been tracked for 68 years, which may not be enough time to show a causal relationship. Some threats to inference or confounding variables could be other macroeconomic factors in the environment that had effects on GDP, such as geopolitical events, trade wars, shortages/ surpluses of certain goods, or boom/ bust economic cycles. My analysis could be improved by gathering other data like the above that could have a confounding effect, and test that data for a null hypothesis to ensure that it did not have a confounding effect.
+**Summary:** My results did support my hypothesis that there is a strong negative correlation between federal funds rates and GDP. A limitation of my analysis was that data has only been tracked for 68 years, which may not be enough time to show a causal relationship. Some threats to inference or confounding variables could be other macroeconomic factors in the environment that had effects on GDP, such as geopolitical events, trade wars, shortages/ surpluses of certain goods, or boom/ bust economic cycles. My analysis could be improved by gathering other data like the above that could have a confounding effect, and test that data for a null hypothesis to ensure that it did not have a confounding effect.
 
 The takeaway from this research project is that the Federal Reserve must be very careful, thoughtful, and sparing in their decision to change interest rates, as this has a profound effect on the U.S. and global economy. An increase in the interest rates that is not needed can adversely affect billions of lives around the world, which is why those at the Federal Reserve must be very calculated and responsible in their actions.
 
