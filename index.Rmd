@@ -67,7 +67,7 @@ ggplot_GDP_growth_rate <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x
 ggplot_regression <- ggplot(data = GDP_And_Fed_Funds_Rates, mapping = aes(x = Rate_lag, y = GDP)) +
   geom_point() +
   geom_smooth(method = "lm") +
-  labs(x = "Fed Funds Rate (%)",
+  labs(x = "Fed Funds Rate, Lagged 1-2 Years (%)",
        y = "GDP ($ Billions)")
 
 
@@ -80,7 +80,7 @@ ggplot_GDP
 ```
   
   
-  This plot of GDP over time shows how GDP has increased and grown in a linear fashion over time, growing from ~$2.5T in 1980 to ~$25T in 2022. This is the dependent variable in my study. 
+  This plot of GDP over time shows how GDP has increased and grown in a linear fashion over time, growing from ~$2.5T in 1980 to $25T in 2022. This is the dependent variable in my study. 
   
   
 ```{r}
@@ -121,7 +121,7 @@ This linear regression regression analysis shows a strong negative correlation b
 
 In my regression analysis, the main coefficient of interest was the coefficient between the federal funds rate and GDP, which came out to -274 when accounting for lag, meaning that when interest rates increase by a full point, GDP decreases by $274B. This coefficient shows a strong negative relationship between the federal funds rates and GDP, and is statistically significant. 
   
-I also ran the regression with the date in mind. The date coefficient was .86, meaning every time date increased by 1, GDP increased by $860M. This is in line with estimates, as GDP has steadily rose throughout time. 
+I also ran the regression with the date in mind. The date coefficient was .862, meaning every time date increased by 1, GDP increased by $862M. This is in line with estimates, as GDP has steadily rose throughout time. 
 
 
 **Summary:** My results did support my hypothesis that there is a strong negative correlation between federal funds rates and GDP. A limitation of my analysis was that data has only been tracked for 68 years, which may not be enough time to show a causal relationship. Some threats to inference or confounding variables could be other macroeconomic factors in the environment that had effects on GDP, such as geopolitical events, trade wars, shortages/ surpluses of certain goods, or boom/ bust economic cycles. My analysis could be improved by gathering other data like the above that could have a confounding effect, and test that data for a null hypothesis to ensure that it did not have a confounding effect.

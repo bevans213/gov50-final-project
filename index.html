@@ -1563,7 +1563,7 @@ Data on U.S. GDP by year since 1947 (the first year they were documented): <a hr
 <span><span class='va'>ggplot_regression</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>GDP_And_Fed_Funds_Rates</span>, mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Rate_lag</span>, y <span class='op'>=</span> <span class='va'>GDP</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Fed Funds Rate (%)"</span>,</span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Fed Funds Rate, Lagged 1-2 Years (%)"</span>,</span>
 <span>       y <span class='op'>=</span> <span class='st'>"GDP ($ Billions)"</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
@@ -1574,7 +1574,7 @@ Data on U.S. GDP by year since 1947 (the first year they were documented): <a hr
 </div>
 <p><img src="index_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
 </div>
-<p>This plot of GDP over time shows how GDP has increased and grown in a linear fashion over time, growing from ~$2.5T in 1980 to ~$25T in 2022. This is the dependent variable in my study.</p>
+<p>This plot of GDP over time shows how GDP has increased and grown in a linear fashion over time, growing from ~$2.5T in 1980 to $25T in 2022. This is the dependent variable in my study.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ggplot_GDP_growth_rate</span></span></code></pre>
@@ -1705,7 +1705,7 @@ R2 Adj.
 </div>
 <p>This linear regression regression analysis shows a strong negative correlation between GDP and federal funds rates.</p>
 <p>In my regression analysis, the main coefficient of interest was the coefficient between the federal funds rate and GDP, which came out to -274 when accounting for lag, meaning that when interest rates increase by a full point, GDP decreases by $274B. This coefficient shows a strong negative relationship between the federal funds rates and GDP, and is statistically significant.</p>
-<p>I also ran the regression with the date in mind. The date coefficient was .86, meaning every time date increased by 1, GDP increased by $860M. This is in line with estimates, as GDP has steadily rose throughout time.</p>
+<p>I also ran the regression with the date in mind. The date coefficient was .862, meaning every time date increased by 1, GDP increased by $862M. This is in line with estimates, as GDP has steadily rose throughout time.</p>
 <p><strong>Summary:</strong> My results did support my hypothesis that there is a strong negative correlation between federal funds rates and GDP. A limitation of my analysis was that data has only been tracked for 68 years, which may not be enough time to show a causal relationship. Some threats to inference or confounding variables could be other macroeconomic factors in the environment that had effects on GDP, such as geopolitical events, trade wars, shortages/ surpluses of certain goods, or boom/ bust economic cycles. My analysis could be improved by gathering other data like the above that could have a confounding effect, and test that data for a null hypothesis to ensure that it did not have a confounding effect.</p>
 <p>The takeaway from this research project is that the Federal Reserve must be very careful, thoughtful, and sparing in their decision to change interest rates, as this has a profound effect on the U.S. and global economy. An increase in the interest rates that is not needed can adversely affect billions of lives around the world, which is why those at the Federal Reserve must be very calculated and responsible in their actions.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
